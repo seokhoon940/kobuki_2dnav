@@ -1,0 +1,35 @@
+TrajectoryPlannerROS:
+# 로봇 설정 파라미터 (차동구동 경우)
+  max_vel_x: 0.3 #x축 병진운동 최대 속도 (meters/sec)
+  min_vel_x: 0.1 #x축 병진운동 최소 속도 (meters/sec)
+  max_vel_theta:  1.0 #회전운동 최대 속도 (radians/sec)
+  min_vel_theta: -1.0 #회전운동 최소 속도 (radians/sec)
+  min_in_place_vel_theta: 0.6 #제자리 회전운동 최소 속도 (radians/sec) 
+  acc_lim_x: 0.5 #x축 병진운동 가속도 (meters/sec^2)
+  acc_lim_theta: 1.0 #회전운동 가속도 (radians/sec^2)
+
+# 목표지점 허용 파라미터
+  yaw_goal_tolerance: 0.3 #목표지점에 도달 했을 때 허용되는 yaw/rotaion (radians)
+  xy_goal_tolerance: 0.15 #목표지점에 도달 했을 때 허용되는 x, y 의 거리 (meters)
+
+# 사전 시뮬레이션 파라미터
+  sim_time: 3.0 #사전 시뮬레이션 시간
+  vx_samples: 6 #x축 속도 공간에서 탐색하는 샘플의 수
+  vtheta_samples: 20 #θ축 속도 공간에서 탐색하는 샘플의 수
+
+# 궤적 스크롤링 파라미터 (궤적 평가)
+  meter_scoring: true #미터(meters) 또는 셀(cells)로 표현하는데 이 설정은 미터로 설정한 경우이다.  
+  pdist_scale: 0.6 #주어진 경로로부터 얼마나 컨트롤러가 가까운지에 대한 가중치
+  gdist_scale: 0.8 #국부 목표지점과 제어 속도에 근접한지에 대한 가중치 
+  occdist_scale: 0.01 #장애물 회피에 대한 가중치
+#dwa: true #Dynamic Window Approach (DWA) 또는 Trajectory Rollout 중에 선택하는 설정
+
+# 우왕자왕(Oscillation) 동작 방지 파라미터
+  oscillation_reset_dist: 0.05 #oscillation 플래그가 리셋되기전 로봇이 얼마나 이동하는가에 대한 설정
+
+# 차동구동(Differential-drive) 로봇 설정
+  holonomic_robot: false #전방향 구동 설정, 차동 구동일 때는 false, 아래의 y축 관련 파라미터는 모두 0으로 설정
+  max_vel_y: 0.0 # 전방향 구동일 경우, y축 병진운동 최대 속도 (meters/sec)
+  min_vel_y: 0.0 # 전방향 구동일 경우, y축 병진운동 최소 속도 (meters/sec)
+  acc_lim_y: 0.0 # 전방향 구동일 경우, y축 병진운동 가속도 (meters/sec^2)
+  vy_samples: 0 # 전방향 구동일 경우, y축 속도 공간에서 탐색하는 샘플의 수

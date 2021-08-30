@@ -1,0 +1,13 @@
+<launch>
+  <include file="$(find kobuki_2dnav)/launch/includes/description.launch.xml"/>
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="5.0" />
+  </node>
+
+  <!--node pkg="tf" type="static_transform_publisher" name="base_scan" args="0.0 0.0 0.5  0.0 0.0 0.0 /base_link /base_scan 10" /-->
+
+</launch>
+                                                                                                     
+                                                                                                     
+                                 
